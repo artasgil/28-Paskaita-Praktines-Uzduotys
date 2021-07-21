@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28 paskaitos ketvirta užduotis - Elemento idejimas i Html"</title>
+</head>
+
+<body>
+
+    <!-- <div class="container">
+        <p>Labas</p>
+    </div> -->
+
+
+    <script>
+        "use strict";
+
+        var elementas = {
+            pradzios_zyme: "",
+            pabaigos_zyme: "",
+            elemento_klases: "",
+            turinys: "",
+            paleidimas: function (pradzios_zyme, elemento_klases, turinys, pabaigos_zyme) {
+                this.pradzios_zyme = pradzios_zyme;
+                this.elemento_klases = elemento_klases;
+                this.turinys = turinys;
+                this.pabaigos_zyme = pabaigos_zyme;
+            },
+
+            atvaizduok: function () {
+                var atvaizduojamasElementas = "";
+                atvaizduojamasElementas += this.pradzios_zyme;
+
+                atvaizduojamasElementas += 'class="';
+                for (var i = 0; i < this.elemento_klases.length; i++) {
+                    if (i == this.elemento_klases.length - 1) {
+                        atvaizduojamasElementas += this.elemento_klases[i];
+                    } else {
+                        atvaizduojamasElementas += this.elemento_klases[i] + " ";
+                    }
+
+                }
+
+                atvaizduojamasElementas += '"';
+                atvaizduojamasElementas += '>';
+
+                atvaizduojamasElementas += this.turinys;
+                atvaizduojamasElementas += this.pabaigos_zyme;
+
+
+                return atvaizduojamasElementas;
+
+
+            }
+        };
+
+
+
+        //------------------Patobulintas kodas, galime susikurti dinamiskai visa svetaine------------
+        var container;
+        var content;
+
+        elementas.paleidimas("<div ", ["content"], "Cia yra mano psl turinys", "</div>")
+        content = elementas.atvaizduok();
+
+
+        elementas.paleidimas("<div ", ["container"], content, "</div>");
+
+        var isvedimoElementas = document.querySelector("body");
+        isvedimoElementas.innerHTML = elementas.atvaizduok();
+
+
+        
+
+        //-------------------------------------------------------------------------------------
+
+
+
+
+
+
+        //-------------------Uzduoties kodas, uzkomentuotas--------------------------------------------
+
+        // elementas.paleidimas("<div ", ["container", "raudonas"], "<p>labas</p><br>", "</div>");
+        // console.log(elementas.atvaizduok());
+
+        // var isvedimoElementas = document.querySelector("body");
+        // isvedimoElementas.innerHTML = elementas.atvaizduok();
+
+        //-------------------Uzduoties kodas, uzkomentuotas--------------------------------------------
+
+
+
+
+
+        // isvedimoElementas.append(elementas.atvaizduok());
+
+
+    </script>
+</body>
+
+</html>

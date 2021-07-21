@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28 paskaitos pirma uzduotis - Kvadratas</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="sk1" name="sk1"></input>
+        <input type="text" id="sk2" name="sk2"></input>
+
+        <button id="kvPlotas">kvPlotas</button>
+        <button id="kvPerimetras">kvPerimetras</button>
+        <button id="kvIstrizaine">kvIstrizaine</button>
+        <button id="nubraizyk">Nubraizyk</button>
+
+
+
+    </div>
+
+    <div id="rezultatas">
+    </div>
+
+    <div class="staciakampio-container">
+
+    </div>
+
+
+
+    <script>
+
+        "use strict";
+        var kvadratas = {
+            a: 0,
+            b: 0,
+            rezultatas: 0,
+
+            paleidimas: function (sk1, sk2) {
+                this.a = sk1;
+                this.b = sk2;
+            },
+
+            kvPlotas: function () {
+                var plotas = this.a * this.b;
+                return plotas;
+            },
+
+            kvPerimetras: function (sk1, sk2) {
+                var perimetras = 2 * this.a + 2 * this.a;
+                return perimetras;
+            },
+            kvIstrizaine: function (sk1, sk2) {
+                var istrizaine = Math.sqrt(this.a * this.a + this.b * this.b);
+                return istrizaine;
+            },
+
+            nubraizyk: function () {
+                var staciakampioContainer = document.querySelector(".staciakampio-container");
+                var div = document.createElement("div");
+                div.style.width = this.a + "px";
+                div.style.height = this.b + "px";
+                div.style.background = "green";
+                div.classList.add("staciakampio-figura");
+                staciakampioContainer.append(div);
+            }
+        };
+
+        document.querySelector('#kvPlotas').addEventListener('click', function () {
+            var sk1 = parseFloat(document.querySelector('#sk1').value);
+            var sk2 = parseFloat(document.querySelector('#sk2').value);
+            var isvedimoElementas = document.querySelector('#rezultatas');
+            kvadratas.paleidimas(sk1, sk2);
+            isvedimoElementas.innerHTML = kvadratas.kvPlotas();
+        });
+
+        document.querySelector('#kvPerimetras').addEventListener('click', function () {
+            var sk1 = parseFloat(document.querySelector('#sk1').value);
+            var sk2 = parseFloat(document.querySelector('#sk2').value);
+            var isvedimoElementas = document.querySelector('#rezultatas');
+            kvadratas.paleidimas(sk1, sk2);
+            isvedimoElementas.innerHTML = kvadratas.kvPerimetras();
+        });
+
+        document.querySelector('#kvIstrizaine').addEventListener('click', function () {
+            var sk1 = parseFloat(document.querySelector('#sk1').value);
+            var sk2 = parseFloat(document.querySelector('#sk2').value);
+            var isvedimoElementas = document.querySelector('#rezultatas');
+            kvadratas.paleidimas(sk1, sk2);
+            isvedimoElementas.innerHTML = kvadratas.kvIstrizaine();
+        });
+
+        document.querySelector('#nubraizyk').addEventListener('click', function () {
+            var sk1 = parseFloat(document.querySelector('#sk1').value);
+            var sk2 = parseFloat(document.querySelector('#sk2').value);
+            var isvedimoElementas = document.querySelector('#staciakampio-container');
+            kvadratas.paleidimas(sk1, sk2);
+            isvedimoElementas.innerHTML = kvadratas.nubraizyk();
+        });
+
+    </script>
+</body>
+
+</html>
