@@ -16,13 +16,14 @@
     <button id="trPusperimetris">Trikampio pusperimetris</button>
     <button id="trPlotas">Trikampio plotas</button>
     <button id="trPerimetras">Trikampio perimetras</button>
-    <button id="trKampai">Trikampio kampai</button>    
+    <button id="trKampai">Trikampio kampai</button>
 
     <p class="trikampio-rezultatas"></p>
 
-    
+
     <script>
         "use strict";
+        var trikampioParametruIsvedimas = document.querySelector(".trikampio-rezultatas");
 
         var trikampis = {
             a: 5,
@@ -39,6 +40,8 @@
             tikrinimas: function () {
                 if (this.a + this.b > this.c && this.b + this.c > this.a && this.a + this.c > this.b) {
                     return trikampis.arTrikampis = true;
+                } else {
+                    return trikampis.arTrikampis = false;
                 }
             },
 
@@ -52,7 +55,7 @@
                 return this.perimetras;
             },
             trikampioPusperimetris: function () {
-                this.pusperimetris = this.perimetras/2;
+                this.pusperimetris = this.perimetras / 2;
                 return this.pusperimetris;
             },
 
@@ -67,8 +70,8 @@
             paleidimas: function () {
                 trikampis.tikrinimas();
                 if (trikampis.arTrikampis != false) {
-                    trikampis.trikampioPusperimetris();
                     trikampis.trikampioPerimetras();
+                    trikampis.trikampioPusperimetris();
                     trikampis.trikampioPlotas();
                     trikampis.trikampioKampai();
                 }
@@ -76,22 +79,59 @@
         }
 
 
-    var trikampioParametruIsvedimas = document.querySelector(".trikampio-rezultatas");
-    document.querySelector("#trPusperimetris").addEventListener("click", function(){
-    trikampis.a=parseFloat(document.querySelector("#a").value);
-    trikampis.b=parseFloat(document.querySelector("#b").value);
-    trikampis.c=parseFloat(document.querySelector("#c").value);
-    trikampis.paleidimas();
-    if (trikampis.arTrikampis==false) {
-        trikampioParametruIsvedimas.innerHTML= "toks trikampis neegzistuoja";
-    }
-    else{
-        trikampioParametruIsvedimas.innerHTML="Trikampio perimetras: " + trikampis.pusperimetris;
-    }
-    
-});    
+        document.querySelector("#trPusperimetris").addEventListener("click", function () {
+            trikampis.a = parseFloat(document.querySelector("#a").value);
+            trikampis.b = parseFloat(document.querySelector("#b").value);
+            trikampis.c = parseFloat(document.querySelector("#c").value);
+            trikampis.paleidimas();
+            if (trikampis.arTrikampis == false) {
+                trikampioParametruIsvedimas.innerHTML = "Toks trikampis neegzistuoja";
+            } else {
+                trikampioParametruIsvedimas.innerHTML = "Trikampio perimetras: " + trikampis.pusperimetris;
+            }
 
-console.log(trikampis);
+        });
+
+        document.querySelector("#trPlotas").addEventListener("click", function () {
+            trikampis.a = parseFloat(document.querySelector("#a").value);
+            trikampis.b = parseFloat(document.querySelector("#b").value);
+            trikampis.c = parseFloat(document.querySelector("#c").value);
+            trikampis.paleidimas();
+            if (trikampis.arTrikampis == false) {
+                trikampioParametruIsvedimas.innerHTML = "Toks trikampis neegzistuoja";
+            } else {
+                trikampioParametruIsvedimas.innerHTML = "Trikampio plotas: " + trikampis.plotas;
+            }
+
+        });
+
+        document.querySelector("#trPerimetras").addEventListener("click", function () {
+            trikampis.a = parseFloat(document.querySelector("#a").value);
+            trikampis.b = parseFloat(document.querySelector("#b").value);
+            trikampis.c = parseFloat(document.querySelector("#c").value);
+            trikampis.paleidimas();
+            if (trikampis.arTrikampis == false) {
+                trikampioParametruIsvedimas.innerHTML = "Toks trikampis neegzistuoja";
+            } else {
+                trikampioParametruIsvedimas.innerHTML = "Trikampio Perimetras: " + trikampis.perimetras;
+            }
+
+        });
+
+        document.querySelector("#trKampai").addEventListener("click", function () {
+            trikampis.a = parseFloat(document.querySelector("#a").value);
+            trikampis.b = parseFloat(document.querySelector("#b").value);
+            trikampis.c = parseFloat(document.querySelector("#c").value);
+            trikampis.paleidimas();
+            if (trikampis.arTrikampis == false) {
+                trikampioParametruIsvedimas.innerHTML = "Toks trikampis neegzistuoja";
+            } else {
+                trikampioParametruIsvedimas.innerHTML = "α – kampas tarp kraštinių b ir c: " + trikampis.kampasTarpBC + " β – kampas tarp kraštinių a ir c: " + trikampis.kampasTarpAC + " γ – kampas tarp kraštinių a ir b: " + trikampis.kampasTarpAB;
+            }
+
+        });
+
+        console.log(trikampis);
     </script>
 </body>
 
